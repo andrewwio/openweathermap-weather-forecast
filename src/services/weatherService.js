@@ -5,8 +5,7 @@ const getWeatherData = (infoType, searchParams) => {
   const url = new URL(BASE_URL + "/" + infoType);
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
 
-  console.log(url);
-  return fetch(url).then((res) => res.json()).then((data) => data);
+  return fetch(url).then((res) => res.json());
 };
 
 export default getWeatherData;
