@@ -3,8 +3,17 @@ import Inputs from './components/Inputs'
 import TimeAndLocation from './components/TimeAndLocation';
 import TemperatureAndDetails from './components/TemperatureAndDetails'
 import Forecast from './components/Forecast'
+import getWeatherData from './services/weatherService'
 
-function App() {
+const App = () => {
+
+  const fetchWeather = async () => {
+    const data = await getWeatherData('weather', {q: 'london'});
+    console.log(data);
+  }
+
+  fetchWeather();
+
   return (
     <div className="App">
       <TopButtons />
@@ -13,8 +22,8 @@ function App() {
       <TimeAndLocation />
       <TemperatureAndDetails />
 
-      <Forecast title="hourly forecast" />
-      <Forecast title="daily forecast" />
+      <Forecast title="HOURLY FORECAST" />
+      <Forecast title="DAILY FORECAST" />
     </div>
   );
 }
