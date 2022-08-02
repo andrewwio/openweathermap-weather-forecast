@@ -1,3 +1,10 @@
+ISSUES:
+1. Enter button doesn't work in search bar
+2. Km/h is hardcoded so it doesn't change when handleUnitsChange
+
+SOLUTIONS:
+1. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

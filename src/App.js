@@ -31,8 +31,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <TopButtons />
-      <Inputs />
+      <TopButtons setQuery={setQuery} />
+      <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
       {weather && (
         <div>
