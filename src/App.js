@@ -22,6 +22,13 @@ const App = () => {
     fetchWeather()
   }, [query, units])
 
+  const formatBackground = () => {
+    if (!weather) return "blue"
+    const threshold = units === 'metric' ? 20 : 60
+    if (weather.temp <= threshold) return "orange"
+    return "blue"
+  }
+
   const fetchWeather = async () => {
     const data = await getFormattedWeatherData({q: 'london'});
     console.log(data);
@@ -30,7 +37,9 @@ const App = () => {
   fetchWeather();
 
   return (
-    <div className="App">
+    <div 
+    className={`${formatBackground()}`}
+    >
       <TopButtons setQuery={setQuery} />
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
