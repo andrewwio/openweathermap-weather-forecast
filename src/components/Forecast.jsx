@@ -1,42 +1,22 @@
-import React from 'react'
+import { iconUrlFromCode } from '../services/weatherService'
 
-const Forecast = ({ title }) => {
+const Forecast = ({ title, items }) => {
   return (
     <div>
       <div>
         <p>{title}</p>
         <hr />
+
         <div>
+          {items.map((item) => (
           <div>
-            <p>04:30pm</p>
-            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-            <p>22°</p>
+            <p>{item.title}</p>
+            <img 
+            src={iconUrlFromCode(item.icon)}
+            alt="" />
+            <p>{`${item.temp.toFixed()}°`}</p>
           </div>
-          <div>
-            <p>04:30pm</p>
-            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-            <p>22°</p>
-          </div>
-          <div>
-            <p>04:30pm</p>
-            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-            <p>22°</p>
-          </div>
-          <div>
-            <p>04:30pm</p>
-            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-            <p>22°</p>
-          </div>
-          <div>
-            <p>04:30pm</p>
-            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-            <p>22°</p>
-          </div>
-          <div>
-            <p>04:30pm</p>
-            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-            <p>22°</p>
-          </div>
+          ))}
         </div>
       </div>
     </div>

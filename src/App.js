@@ -39,8 +39,8 @@ const App = () => {
           <TimeAndLocation weather={weather} />
           <TemperatureAndDetails weather={weather} />
     
-          <Forecast title="HOURLY FORECAST" />
-          <Forecast title="DAILY FORECAST" />
+          <Forecast title="HOURLY FORECAST" items={weather.hourly} />
+          <Forecast title="DAILY FORECAST" items={weather.daily} />
         </div>
       )}
     </div>
