@@ -5,57 +5,72 @@ import {
   UilSun,
   UilSunset
 } from '@iconscout/react-unicons'
+import { iconUrlFromCode, formatToLocalTime } from '../services/weatherService'
 
-const TemperatureAndDetails = () => {
+const TemperatureAndDetails = ({weather: {
+  details, 
+  icon, 
+  temp, 
+  temp_min, 
+  temp_max, 
+  sunrise, 
+  sunset, 
+  speed, 
+  humidity, 
+  feels_like, 
+  timezone
+}}) => {
   return (
     <div>
       <div>
-        <p>Clear</p>
+        <p>{details}</p>
       </div>
       <div>
-        <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
-        <p>34°</p>
+        <img 
+        src={iconUrlFromCode(icon)}
+        alt="" />
+        <p>{`${temp.toFixed()}°`}</p>
         <div>
           <div>
             <UilTemperature />
             Feels Like:
-            <span>32°</span>
+            <span>{`${feels_like.toFixed()}°`}</span>
           </div>
           <div>
             <UilTear />
             Humidity:
-            <span>32°</span>
+            <span>{`${humidity.toFixed()}%`}</span>
           </div>
           <div>
             <UilWind />
             Wind:
-            <span>32°</span>
+            <span>{`${speed.toFixed()}km/h`}</span>
           </div>
         </div>
       </div>
       <div>
         <UilSun />
         <p>
-          Rise:
-          <span>06:45am</span>
+          Sunrise:
+          <span>{formatToLocalTime(sunrise, timezone, "hh:mm a")}</span>
         </p>
         <p>|</p>
         <UilSunset />
         <p>
-          Set:
-          <span>07:45pm</span>
+          Sunset:
+          <span>{formatToLocalTime(sunset, timezone, "hh:mm a")}</span>
         </p>
         <p>|</p>
         <UilSun />
         <p>
           High:
-          <span>45°</span>
+          <span>{`${temp_max.toFixed()}°`}</span>
         </p>
         <p>|</p>
         <UilSun />
         <p>
           Low:
-          <span>20°</span>
+          <span>{`${temp_min.toFixed()}°`}</span>
         </p>
       </div>
     </div>
