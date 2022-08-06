@@ -1,6 +1,6 @@
 {
   "homepage": "http://andrewwio.github.io/openweathermap-weather-forecast",
-  "name": "ios-weather-app-clone",
+  "name": "openweathermap-weather-forecast",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
