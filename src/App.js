@@ -8,8 +8,8 @@ import getFormattedWeatherData from './services/weatherService';
 
 
 const App = () => {
-  const [query, setQuery] = useState({ q: "berlin" });
-  const [units, setUnits] = useState("metric");
+  const [query, setQuery] = useState({ q: "New York City" });
+  const [units, setUnits] = useState("imperial");
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
@@ -23,10 +23,10 @@ const App = () => {
   }, [query, units])
 
   const formatBackground = () => {
-    if (!weather) return "blue"
+    if (!weather) return "from-cyan-700 to-blue-700"
     const threshold = units === 'metric' ? 20 : 60
-    if (weather.temp <= threshold) return "orange"
-    return "blue"
+    if (weather.temp <= threshold) return "from-cyan-700 to-blue-700"
+    return "from-yellow-700 to-orange-700"
   }
 
   const fetchWeather = async () => {
@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div 
-    className={`${formatBackground()}`}
+    className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br  h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
     >
       <TopButtons setQuery={setQuery} />
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
