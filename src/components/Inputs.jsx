@@ -3,16 +3,20 @@ import { UilSearch, UilLocationPoint } from '@iconscout/react-unicons'
 
 const Inputs = ({ setQuery, units, setUnits }) => {
   const [city, setCity] = useState("")
+  const [formKey, setFormKey] = useState(10)
 
-  const handleUnitsChange = (e) => {
-    const selectedUnit = e.currentTarget.name
-    if (units !== selectedUnit) setUnits(selectedUnit)
-  }
+  // const handleUnitsChange = (e) => {
+  //   const selectedUnit = e.currentTarget.name
+  //   if (units !== selectedUnit) setUnits(selectedUnit)
+  // }
 
   const handleSearchClick = (e) => {
-    if (city !== '') setQuery({q: city})
-
+    if (city !== '') {
+      setQuery({q: city})
+      setFormKey(formKey + 1)
+    }
   }
+
 
   const handleLocationClick = () => {
     if (navigator.geolocation) {
@@ -30,7 +34,9 @@ const Inputs = ({ setQuery, units, setUnits }) => {
 
   return (
     <div className="flex flex-row">
-      <div  className="flex flex-row w-11/12 space-x-1 items-center relative">
+      <div 
+        key={formKey}
+        className="flex flex-row w-11/12 space-x-1 items-center relative">
         <input 
           value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
@@ -43,6 +49,7 @@ const Inputs = ({ setQuery, units, setUnits }) => {
         size={25}
         className="cursor-pointer text-gray-400 absolute right-12"
         onClick={handleSearchClick}
+
         />
         <UilLocationPoint 
         size={25}
