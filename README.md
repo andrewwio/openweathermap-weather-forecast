@@ -1,11 +1,13 @@
 ISSUES:
-1. Enter button doesn't work in search bar
+1. [complete] Enter button doesn't work in search bar
 2. Km/h is hardcoded so it doesn't change when handleUnitsChange
 3. Styling
 4. [complete] Change search icon
 5. onsubmit should clear search bar
 6. Put top logo
 7. Change background according to time
+8. [complete] Put geolocation where the converter is 
+9. put the converter on the buttom
 
 
 SOLUTIONS:
@@ -16,6 +18,7 @@ SOLUTIONS:
 5. 
 6. 
 7. 
+8. CSS
 
 # Getting Started with Create React App
 
