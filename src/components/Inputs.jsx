@@ -11,42 +11,43 @@ const Inputs = ({ setQuery, units, setUnits }) => {
 
   const handleSearchClick = () => {
     if (city !== '') setQuery({q: city})
+
   }
 
-  const handleLocationClick = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let lat = position.coords.latitude;
-        let lon = position.coors.longitude;
+  // const handleLocationClick = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       let lat = position.coords.latitude;
+  //       let lon = position.coors.longitude;
 
-        setQuery({
-          lat,
-          lon
-        })
-      })
-    }
-  }
+  //       setQuery({
+  //         lat,
+  //         lon
+  //       })
+  //     })
+  //   }
+  // }
 
   return (
     <div className="flex flex-row justify-center my-6">
-      <div  className="flex flex-row w-3/4 items-center justify-center space-x-4">
+      <div  className="flex flex-row w-3/4 items-center relative">
         <input 
           value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
           type="text" 
-          placeholder="Search for city..."
-          className="text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize placeholder:lowercase"
+          placeholder="Search for a city..."
+          className="text-xl text-gray-400 p-2 w-full shadow-xl pl-3 focus:outline-none"
         />
         <UilSearch 
         size={25}
-        className="text-white cursor-pointer transition ease-out hover:scale-125"
+        className="cursor-pointer text-gray-400 absolute right-4"
         onClick={handleSearchClick}
         />
-        <UilLocationPoint 
+        {/* <UilLocationPoint 
         size={25}
         className="text-white cursor-pointer transition ease-out hover:scale-125"
         onClick={handleLocationClick}
-        />
+        /> */}
       </div>
       <div className="flex flex-row w-1/4 items-center justify-center">
         <button
@@ -68,66 +69,3 @@ const Inputs = ({ setQuery, units, setUnits }) => {
 export default Inputs
 
 
-
-
-// import { useState } from 'react'
-// import { UilSearch, UilLocationPoint } from '@iconscout/react-unicons'
-
-// const Inputs = ({ setQuery, units, setUnits }) => {
-//   const [city, setCity] = useState("")
-
-//   const handleUnitsChange = (e) => {
-//     const selectedUnit = e.currentTarget.name
-//     if (units !== selectedUnit) setUnits(selectedUnit)
-//   }
-
-//   const handleSearchClick = () => {
-//     if (city !== '') setQuery({q: city})
-//   }
-
-//   const handleLocationClick = () => {
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition((position) => {
-//         let lat = position.coords.latitude;
-//         let lon = position.coors.longitude;
-
-//         setQuery({
-//           lat,
-//           lon
-//         })
-//       })
-//     }
-//   }
-
-//   return (
-//     <div>
-//       <div>
-//         <input 
-//           value={city}
-//           onChange={(e) => setCity(e.currentTarget.value)}
-//           type="text" 
-//           placeholder="Search for city..."
-//         />
-//         <UilSearch 
-//         onClick={handleSearchClick}
-//         />
-//         <UilLocationPoint 
-//         onClick={handleLocationClick}
-//         />
-//       </div>
-//       <div>
-//         <button
-//         name="metric"
-//         onClick={handleUnitsChange}
-//         >°C</button>
-//         <p>|</p>
-//         <button
-//         name="imperial"
-//         onClick={handleUnitsChange}
-//         >°F</button>
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Inputs
