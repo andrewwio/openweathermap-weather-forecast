@@ -3,11 +3,13 @@ ISSUES:
 2. Km/h is hardcoded so it doesn't change when handleUnitsChange
 3. Styling
 4. [complete] Change search icon
-5. onsubmit should clear search bar
+5. [complete] onsubmit should clear search bar
 6. Put top logo
 7. Change background according to time
 8. [complete] Put geolocation where the converter is 
 9. put the converter on the buttom
+10. [complete] Loader icon
+11. City not found
 
 
 SOLUTIONS:
@@ -15,10 +17,12 @@ SOLUTIONS:
 2. 
 3. 
 4. CSS adjustments
-5. 
+5. removed value={city}
 6. 
 7. 
 8. CSS
+9. 
+10. First used useEffect to see whether it's loading, then tried using react-spinners, i gave up on that dream, then I downloaded a spinner from loader.io and made my own component. Now it works, but not yet attached to fetch request
 
 # Getting Started with Create React App
 

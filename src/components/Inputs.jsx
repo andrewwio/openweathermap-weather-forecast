@@ -1,9 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { UilSearch, UilLocationPoint } from '@iconscout/react-unicons'
+import Loader from './Loader'
 
 const Inputs = ({ setQuery, units, setUnits }) => {
   const [city, setCity] = useState("")
   const [formKey, setFormKey] = useState(10)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 5000)
+  }, [])
+
+
 
   // const handleUnitsChange = (e) => {
   //   const selectedUnit = e.currentTarget.name
@@ -14,6 +25,10 @@ const Inputs = ({ setQuery, units, setUnits }) => {
     if (city !== '') {
       setQuery({q: city})
       setFormKey(formKey + 1)
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+      }, 5000)
     }
   }
 
@@ -36,25 +51,29 @@ const Inputs = ({ setQuery, units, setUnits }) => {
     <div className="flex flex-row">
       <div 
         key={formKey}
-        className="flex flex-row w-11/12 space-x-1 items-center relative">
+        className="flex flex-row w-11/12 items-center relative">
         <input 
-          value={city}
+          // value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
           onKeyPress={(e) => e.key === 'Enter' && handleSearchClick()}
           type="text" 
           placeholder="Search for a city..."
           className="text-xl text-gray-400 p-2 w-full shadow-xl pl-3 focus:outline-none"
         />
-        <UilSearch 
-        size={25}
-        className="cursor-pointer text-gray-400 absolute right-12"
-        onClick={handleSearchClick}
 
-        />
+        { loading ? <Loader /> :
+
+        <UilSearch 
+          size={25}
+          className="cursor-pointer text-gray-400 right-12 absolute"
+          onClick={handleSearchClick}
+        /> 
+  }
+
         <UilLocationPoint 
-        size={25}
-        className="text-white cursor-pointer transition ease-out hover:scale-125 relative left-5"
-        onClick={handleLocationClick}
+          size={25}
+          className="text-white cursor-pointer transition ease-out hover:scale-125 relative left-5"
+          onClick={handleLocationClick}
         />
       </div>
       {/* <div className="flex flex-row w-1/4 items-center justify-center">

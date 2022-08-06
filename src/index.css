@@ -8,8 +8,14 @@
   }
 }
 
-.w90 {
+.w95 {
   width: 95%;
+}
+
+.loader {
+  position: absolute;
+  width: 2rem;
+  left: 16rem;
 }
 
 /* body {
