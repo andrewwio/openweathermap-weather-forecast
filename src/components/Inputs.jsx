@@ -9,8 +9,8 @@ const Inputs = ({ setQuery, units, setUnits }) => {
     if (units !== selectedUnit) setUnits(selectedUnit)
   }
 
-  const handleSearchClick = () => {
-    if (city !== '') setQuery({q: city})
+  const handleSearchClick = (e) => {
+    if (city !== '' || e.which == 13) setQuery({q: city})
 
   }
 
@@ -34,9 +34,10 @@ const Inputs = ({ setQuery, units, setUnits }) => {
         <input 
           value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
+          onKeyPress={(e) => e.key === 'Enter' && handleSearchClick()}
           type="text" 
           placeholder="Search for a city..."
-          className="text-xl text-gray-400 p-2 w-full shadow-xl pl-3 focus:outline-none"
+          className="text-xl text-gray-400 p-2 w-full shadow-xl pl-3 focus:outline-none wage"
         />
         <UilSearch 
         size={25}

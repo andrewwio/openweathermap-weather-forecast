@@ -2,9 +2,20 @@ ISSUES:
 1. Enter button doesn't work in search bar
 2. Km/h is hardcoded so it doesn't change when handleUnitsChange
 3. Styling
+4. [complete] Change search icon
+5. onsubmit should clear search bar
+6. Put top logo
+7. Change background according to time
+
 
 SOLUTIONS:
-1. 
+1. onKeyPress={(e) => e.key === 'Enter' && handleSearchClick()}
+2. 
+3. 
+4. CSS adjustments
+5. 
+6. 
+7. 
 
 # Getting Started with Create React App
 
