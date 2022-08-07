@@ -1,3 +1,5 @@
+LIVE DEMO AT https://andrewwio.github.io/openweathermap-weather-forecast/
+
 ISSUES:
 1. [complete] Enter button doesn't work in search bar
 2. Km/h is hardcoded so it doesn't change when handleUnitsChange
