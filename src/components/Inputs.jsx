@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { UilSearch, UilLocationPoint } from '@iconscout/react-unicons'
 import Loader from './Loader'
 
@@ -7,12 +7,12 @@ const Inputs = ({ setQuery, units, setUnits }) => {
   const [formKey, setFormKey] = useState(10)
   const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }, [])
+  // useEffect(() => {
+  //   setLoading(true)
+  //   setTimeout(() => {
+  //     setLoading(false)
+  //   }, 2000)
+  // }, [])
 
 
   // const handleUnitsChange = (e) => {
@@ -27,7 +27,7 @@ const Inputs = ({ setQuery, units, setUnits }) => {
       setLoading(true)
       setTimeout(() => {
         setLoading(false)
-      }, 5000)
+      }, 2000)
     }
   }
 

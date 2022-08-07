@@ -5,11 +5,13 @@ import TimeAndLocation from './components/TimeAndLocation';
 import TemperatureAndDetails from './components/TemperatureAndDetails'
 import Forecast from './components/Forecast'
 import getFormattedWeatherData from './services/weatherService';
+import CityNotFound from './components/CityNotFound'
 
 const App = () => {
-  const [query, setQuery] = useState({ q: "Chicago" });
+  const [query, setQuery] = useState("");
   const [units, setUnits] = useState("imperial");
   const [weather, setWeather] = useState(null);
+  const [notFound, setNotFound] = useState(false)
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -18,7 +20,10 @@ const App = () => {
       })
     }
 
-    fetchWeather()
+    fetchWeather().catch(err => {
+      console.log(err);
+      console.log("hello App23")
+    });
   }, [query, units])
 
   const formatBackground = () => {
@@ -36,18 +41,32 @@ const App = () => {
   }
 
   const fetchWeather = async () => {
-    const data = await getFormattedWeatherData({q: 'london'});
+    const data = await getFormattedWeatherData()
+    .catch(err => {
+      console.log(err)
+      console.log("Hello App45")
+    });
     console.log(data);
+    if (data === undefined) {
+      setNotFound(true)
+    } else {
+      setNotFound(false)
+    }
   }
 
-  fetchWeather();
+
+  fetchWeather()    
+  .catch(err => {
+    console.log(err)
+    console.log("Hello App53")
+  });;
 
   return (
-    <div className={`mx-auto max-w-fit py-5 px-4 bg-gradient-to-br h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}>
+    <div className={`max-w-fit main py-5 px-4 bg-gradient-to-br shadow-xl shadow-gray-400 ${formatBackground()}`}>
       <TopButtons setQuery={setQuery} />
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits}  />
-
-      {weather && (
+      { notFound ? <CityNotFound /> : 
+      (weather && (
         <div>
           <TimeAndLocation weather={weather} />
           <TemperatureAndDetails weather={weather} />
@@ -55,7 +74,8 @@ const App = () => {
           <Forecast title="HOURLY FORECAST" items={weather.hourly} />
           <Forecast title="DAILY FORECAST" items={weather.daily} />
         </div>
-      )}
+      ))
+}
     </div>
   );
 }
