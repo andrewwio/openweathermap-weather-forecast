@@ -9,7 +9,7 @@ ISSUES:
 8. [complete] Put geolocation where the converter is 
 9. put the converter on the buttom
 10. [complete] Loader icon
-11. City not found
+11. [complete] City not found
 
 
 SOLUTIONS:
@@ -23,6 +23,7 @@ SOLUTIONS:
 8. CSS
 9. 
 10. First used useEffect to see whether it's loading, then tried using react-spinners, i gave up on that dream, then I downloaded a spinner from loader.io and made my own component. Now it works, but not yet attached to fetch request
+11. made it similar to loading but linked to data
 
 # Getting Started with Create React App
 
